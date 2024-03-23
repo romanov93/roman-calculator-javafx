@@ -24,11 +24,11 @@ public class RomanNumbersValidatorImpl implements RomanNumbersValidator{
 
     @Override
     public boolean isArabicNumberPossibleConvertToRoman(MixedFraction fraction) {
-        if (fraction.getFullPart() < 0) {
+        if (fraction.isNegative()) {
             alertsManager.showNegativeAlert();
             return false;
         }
-        if (fraction.getFullPart() > 3999999) {
+        if (fraction.biggerThenMaxRomanValue()) {
             alertsManager.showBigSizeAlert(fraction.getFullPart());
             return false;
         }

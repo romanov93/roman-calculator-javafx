@@ -1,5 +1,6 @@
 package ru.romanov.romancalc.roman;
 
+import ru.romanov.romancalc.alerts.AlertsManager;
 import ru.romanov.romancalc.calculator.MixedFraction;
 
 import java.util.HashMap;
@@ -55,6 +56,7 @@ public class FractionToRomanNumberConverterImpl implements FractionToRoman{
                 numerator -= value;
             }
         }
+
         return sb.toString();
     }
 

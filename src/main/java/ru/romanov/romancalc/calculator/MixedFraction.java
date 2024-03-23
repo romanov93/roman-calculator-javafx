@@ -17,6 +17,14 @@ public class MixedFraction {
         return fullPart == 0 && numerator == 0;
     }
 
+    public boolean isNegative() {
+        return getFullPart() < 0 || (getFullPart() == 0 && getNumerator() < 0);
+    }
+
+    public boolean biggerThenMaxRomanValue() {
+        return getFullPart() > 3999999;
+    }
+
     public static MixedFraction zeroFraction() {
         return new MixedFraction(0 ,0);
     }

@@ -7,7 +7,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import ru.romanov.romancalc.fxcomponents.CalculatorDisplay;
 import ru.romanov.romancalc.fxcomponents.CalculatorDisplayImpl;
 
 import java.util.ArrayList;
@@ -148,7 +147,7 @@ public class CalculatorForm extends Pane {
     public Button getNextQuote() {
         return nextQuote;
     }
-    public TextField getDisplay() {
+    public CalculatorDisplayImpl getDisplay() {
         return display;
     }
     public Button getClean() {

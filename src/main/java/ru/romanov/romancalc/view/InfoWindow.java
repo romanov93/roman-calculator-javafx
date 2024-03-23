@@ -65,7 +65,7 @@ public class InfoWindow extends Stage {
         Hyperlink link = new Hyperlink("Перейти на GitHub");
         link.setOnAction(click -> {
             try {
-                Desktop.getDesktop().browse(new URI("https://github.com/romanov93/roman-numerals-calculator"));
+                Desktop.getDesktop().browse(new URI("https://github.com/romanov93/roman-calculator-javafx"));
             } catch (IOException | URISyntaxException e) {
                 throw new RuntimeException(e);
             }
