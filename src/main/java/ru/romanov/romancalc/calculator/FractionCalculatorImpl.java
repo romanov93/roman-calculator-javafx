@@ -1,8 +1,19 @@
 package ru.romanov.romancalc.calculator;
 
+import ru.romanov.romancalc.alerts.AlertsManager;
+import ru.romanov.romancalc.alerts.AlertsManagerImpl;
+
 import java.math.BigInteger;
 
-public class FractionCalculatorImpl implements FractionCalculator{
+import static ru.romanov.romancalc.enums.MathAction.DIVISION;
+import static ru.romanov.romancalc.enums.MathAction.MULTIPLICATION;
+
+public class FractionCalculatorImpl implements FractionCalculator {
+
+    private final AlertsManager alertsManager = new AlertsManagerImpl();
+
+    private final AnswerAccuracyChecker answerAccuracyChecker = new AnswerAccuracyCheckerImpl();
+
     @Override
     public MixedFraction addict(MixedFraction input1, MixedFraction input2) {
         long numeratorOfFirstInput = convertFractionToImproperAndGetNumerator(input1);
@@ -25,6 +36,9 @@ public class FractionCalculatorImpl implements FractionCalculator{
         long numeratorOfSecondInput = convertFractionToImproperAndGetNumerator(input2);
         long numeratorOfImproperFraction =
                 (numeratorOfFirstInput * input1.getDenominator()) / numeratorOfSecondInput;
+
+        answerAccuracyChecker.checkForRoundingOfResult(numeratorOfFirstInput, numeratorOfSecondInput, DIVISION);
+
         return convertImproperFractionToMixedFraction(numeratorOfImproperFraction);
     }
 
@@ -37,6 +51,9 @@ public class FractionCalculatorImpl implements FractionCalculator{
                 .multiply(BigInteger.valueOf(numeratorOfSecondInput))
                 .divide(BigInteger.valueOf(1728))
                 .longValue();
+
+        answerAccuracyChecker.checkForRoundingOfResult(numeratorOfFirstInput, numeratorOfSecondInput, MULTIPLICATION);
+
         return convertImproperFractionToMixedFraction(numeratorOfImproperFraction);
     }
 
