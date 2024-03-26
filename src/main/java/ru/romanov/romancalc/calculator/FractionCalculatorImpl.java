@@ -10,8 +10,6 @@ import static ru.romanov.romancalc.enums.MathAction.MULTIPLICATION;
 
 public class FractionCalculatorImpl implements FractionCalculator {
 
-    private final AlertsManager alertsManager = new AlertsManagerImpl();
-
     private final AnswerAccuracyChecker answerAccuracyChecker = new AnswerAccuracyCheckerImpl();
 
     @Override

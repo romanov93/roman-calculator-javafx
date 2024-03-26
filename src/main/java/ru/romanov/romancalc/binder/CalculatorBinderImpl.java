@@ -64,7 +64,6 @@ public class CalculatorBinderImpl implements CalculatorBinder{
             display.setText(input.substring(0, input.length() - 2));
         else
             display.setText(input.substring(0, input.length() - 1));
-
     }
 
     @Override
@@ -75,12 +74,16 @@ public class CalculatorBinderImpl implements CalculatorBinder{
         if (input.isEmpty() || input.contains("nulla")) {
             return;
         }
-        if (input.contains("=") && input.charAt(input.length() - 1) != '=') {
+        if (input.contains("=")) {
             display.setText(input.split("=")[1] + action);
             return;
         }
         if (display.lastInputSymbolIsAction()) {
-            display.setText(input.substring(0, input.length() - 2) + action);
+            display.setText(input.substring(0, input.length() - 1) + action);
+            return;
+        }
+        if (display.containsMathAction()) {
+            return;
         }
         display.appendText(action);
     }

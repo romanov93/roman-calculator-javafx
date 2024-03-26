@@ -6,6 +6,8 @@ import ru.romanov.romancalc.enums.MathAction;
 
 import java.math.BigInteger;
 
+import static ru.romanov.romancalc.utils.TypeConversionUtils.convertDoubleToStringWith10DigitsAfterCommon;
+
 public class AnswerAccuracyCheckerImpl implements AnswerAccuracyChecker{
 
     private AlertsManager alertsManager = new AlertsManagerImpl();
@@ -24,14 +26,8 @@ public class AnswerAccuracyCheckerImpl implements AnswerAccuracyChecker{
                     roundingOfResult = findRoundingAfterMultiplication(numeratorOfFirstInput, numeratorOfSecondInput);
         }
 
-        System.out.println(numeratorOfFirstInput);
-        System.out.println(numeratorOfSecondInput);
-        System.out.println(roundingOfResult);
-        System.out.println(convertDoubleToStringWith10DigitsAfterCommon(roundingOfResult));
-        if (roundingOfResult != 0) {
+        if (roundingOfResult != 0)
             alertsManager.showRoundingAlert(convertDoubleToStringWith10DigitsAfterCommon(roundingOfResult));
-        }
-
     }
 
     double findRoundingAfterMultiplication(long numeratorOfFirstInput, long numeratorOfSecondInput) {
@@ -47,9 +43,7 @@ public class AnswerAccuracyCheckerImpl implements AnswerAccuracyChecker{
         return ((double) (numeratorOfFirstInput * 1728) / numeratorOfSecondInput) % 1 / 1728;
     }
 
-    String convertDoubleToStringWith10DigitsAfterCommon(double input) {
-        return String.format("%.10f", input);
-    }
+
 
 
 }

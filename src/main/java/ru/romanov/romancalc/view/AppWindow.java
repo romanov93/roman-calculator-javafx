@@ -34,7 +34,6 @@ public class AppWindow extends Application {
         primaryStage.setTitle(TITLE);
         primaryStage.getIcons().add(getAppIcon());
 
-
         Scene scene = new Scene(mainView, WIDTH, HEIGHT);
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -49,18 +49,4 @@ public class AnswerAccuracyCheckerTest {
 
         assertThat(rounding).isEqualTo(expectedRounding);
     }
-
-    @ParameterizedTest
-    @CsvSource (value = {
-            "3.3489797668038406E-7; 0,0000003349",
-            "8.037551440329219E-6; 0,0000080376",
-    }, delimiter = ';')
-    void convertDoubleToStringWith10DigitsAfterCommonTest(double inputDouble, String expectedResult) {
-
-        String resultOfConversion = answerAccuracyChecker.convertDoubleToStringWith10DigitsAfterCommon(inputDouble);
-
-        assertThat(resultOfConversion).isEqualTo(expectedResult);
-    }
-
-
 }
