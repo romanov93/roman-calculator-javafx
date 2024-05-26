@@ -1,0 +1,54 @@
+@startuml
+
+autonumber
+skinparam {
+MaxMessageSize 100
+}
+skinparam sequence {
+MessageAlign center
+'ParticipantPadding 0
+}
+
+actor "User" as user order 10
+participant "JavaFX UI" as ui order 20
+participant "Binder" as bind order 30
+box #LightBlue
+participant "Roman \nValidator" as valid order 40
+participant "Roman to Fraction \nConverter" as convToF order 50
+participant "Fraction \nCalculator" as calc order 60
+participant "Fraction to Roman \n Converter" as convToR order 70
+end box
+
+user -> ui : click
+ui -> bind : input numbers
+bind -> valid : roman \nnumber
+valid -> bind : result of validation
+bind --> ui : <font color = red> if not valid
+note left
+" IIX is
+ wrong
+  input "
+end note
+autonumber 5
+bind -> convToF : roman numbers
+convToF -> bind : fractions
+bind -> calc : fractions and action (+|-|:|x)
+calc -> bind : result fraction
+bind -> valid : result fraction
+valid -> bind : validation of result fraction
+bind --> ui : <font color = red> if result big
+note left
+  " result is 4000000
+   its too big and,
+impossible convert
+ to roman number "
+end note
+autonumber 11
+bind -> convToR : calculation result (fraction)
+convToR -> bind : result (roman)
+bind -> ui : result (roman)
+note left
+  "VII+III=X"
+end note
+
+@enduml
